@@ -31,4 +31,8 @@
     label {
         margin-left:5px;
     }
+
+    .sr-only {
+        visibility: hidden;
+    }
 }

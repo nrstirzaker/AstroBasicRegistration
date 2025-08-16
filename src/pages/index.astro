@@ -1,7 +1,8 @@
 ---
-import Welcome from '../components/Welcome.astro';
+export const prerender = false
 import Layout from '../layouts/Layout.astro';
 import LookupAddress from '../components/LookupAddressComponent.vue';
+import {actions} from 'astro:actions';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -9,14 +10,19 @@ import LookupAddress from '../components/LookupAddressComponent.vue';
 
 <Layout>
     <div class="max-w-6/10">
-        <form>
+        <form method="POST" action={actions.submit1}>
             <fieldset>
 
                 <div class="grid grid-cols-[75px_250px_350px]">
 
                     <div>
+                        <label class="block" for="email_address">Email Address</label>
+                        <input type="text" id="email_address" name="email_address" class="w-[200px]" placeholder="Email Address"/>
+                    </div>
+
+                    <div>
                         <label class="block" for="title">Title</label>
-                        <select id="title">
+                        <select id="title" name="title">
                             <option value="" disabled selected></option>
                             <option value="Mr">Mr</option>
                             <option value="Mrs">Mrs</option>
@@ -26,31 +32,31 @@ import LookupAddress from '../components/LookupAddressComponent.vue';
                     </div>
                     <div>
                         <label class="block" for="first_name">First Name</label>
-                        <input type="text" id="first_name" class="w-[200px]" placeholder="First Name"/>
+                        <input type="text" id="first_name" name="first_name" class="w-[200px]" placeholder="First Name"/>
                     </div>
 
                     <div>
                         <label class="block" for="surname">Surname</label>
-                        <input type="text" id="surname" class="w-[300px]" placeholder="Surname"/>
+                        <input type="text" id="surname" name="surname" class="w-[300px]" placeholder="Surname"/>
                     </div>
                 </div>
                 <div>
                     <LookupAddress client:load/>
                 </div>
-            </fieldset>
-            <div>
-                <fieldset>
+
+                <div>
+
                     <div class="ml-40">
                         <p> What level of involvement do you want?</p>
                         <input type="radio" id="follower" name="involvement" value="Follower"/>
-                        <label for="follower">Follower (Unable to come to meetings but wants to be keep up to
+                        <label for="follower">Follower (I am unable to come to meetings but I want to be keep up to
                             date)</label><br>
 
                         <input type="radio" id="meeter" name="involvement" value="Meeter"/>
-                        <label for="meeter">Meeter (Able to come to meetings)</label><br>
+                        <label for="meeter">Meeter (I am able to come to village meetings)</label><br>
 
                         <input type="radio" id="activist" name="involvement" value="Activist"/>
-                        <label for="activist">Activist (Wants to be involved in other ways)</label><br>
+                        <label for="activist">Activist (I want to be involved in other ways)</label><br>
                     </div>
 
                     <label for="ways_to_help">Ways I can help</label>
@@ -58,13 +64,18 @@ import LookupAddress from '../components/LookupAddressComponent.vue';
 
                     <br>
                     <div>
-                        <label for="privacy">Please read the <a href="">privacy statement</a></label>
-                        <input type="checkbox" id="privacy"/>
+                        <label for="privacy_statement">I confirm that I have read the <a href="">privacy statement</a></label>
+                        <input type="checkbox" id="privacy_statement" name="privacy_statement" value="false"/>
                     </div>
                     <br>
-                </fieldset>
-            </div>
+                    <label for="emai" class="sr-only">h0n3yp0t</label>
+                    <input id="emai" type="text" name="emai" class="sr-only" tabindex="-1" />
 
+                </div>
+
+                <button type="submit">Submit</button>
+                <button type="reset">Cancel</button>
+            </fieldset>
         </form>
     </div>
 </Layout>
