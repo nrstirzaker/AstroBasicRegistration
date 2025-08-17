@@ -35,4 +35,8 @@
     .sr-only {
         visibility: hidden;
     }
+
+    input[data-error] {
+        border: 2px solid red;
+    }
 }

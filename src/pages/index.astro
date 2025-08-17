@@ -21,7 +21,15 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {}
 
                     <div>
                         <label class="block" for="email_address">Email Address</label>
-                        <input type="text" id="email_address" name="email_address" class="w-[200px]" placeholder="Email Address"/>
+                        <input type="text" id="email_address" name="email_address" class="w-[200px]" placeholder="Email Address" aria-describedby={inputErrors.email_address ? "email_address-error" : undefined} data-error={inputErrors.email_address}/>
+                        {
+                            inputErrors.email_address && (<p id="email_address-error">{inputErrors.email_address[0]}</p>)
+                        }
+                    </div>
+
+                    <div>
+                        <label class="block" for="no_email_address">I don't have an email address</label>
+                        <input type="checkbox" id="no_email_address" name="no_email_address" class="w-[200px]" />
                     </div>
 
                     <div>
@@ -36,7 +44,10 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {}
                     </div>
                     <div>
                         <label class="block" for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" class="w-[200px]" placeholder="First Name"/>
+                        <input type="text" id="first_name" name="first_name" class="w-[200px]" placeholder="First Name" aria-describedby={inputErrors.first_name ? "first_name-error" : undefined}/>
+                        {
+                            inputErrors.first_name && (<p id="first_name-error">{inputErrors.first_name[0]}</p>)
+                        }
                     </div>
 
                     <div>
