@@ -2,7 +2,10 @@
 export const prerender = false
 import Layout from '../layouts/Layout.astro';
 import LookupAddress from '../components/LookupAddressComponent.vue';
-import {actions} from 'astro:actions';
+import {actions, isInputError} from 'astro:actions';
+
+const result = Astro.getActionResult(actions.register)
+const inputErrors = isInputError(result?.error) ? result.error.fields : {}
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -10,7 +13,8 @@ import {actions} from 'astro:actions';
 
 <Layout>
     <div class="max-w-6/10">
-        <form method="POST" action={actions.submit1}>
+        <form method="POST" action={actions.register}>
+            {result?.error && Object.keys(inputErrors).length === 0 && (<p>There was a problem processing your registration</p>)}
             <fieldset>
 
                 <div class="grid grid-cols-[75px_250px_350px]">
@@ -48,14 +52,14 @@ import {actions} from 'astro:actions';
 
                     <div class="ml-40">
                         <p> What level of involvement do you want?</p>
-                        <input type="radio" id="follower" name="involvement" value="Follower"/>
+                        <input type="radio" id="follower" name="membership" value="Follower"/>
                         <label for="follower">Follower (I am unable to come to meetings but I want to be keep up to
                             date)</label><br>
 
-                        <input type="radio" id="meeter" name="involvement" value="Meeter"/>
-                        <label for="meeter">Meeter (I am able to come to village meetings)</label><br>
+                        <input type="radio" id="participant" name="membership" value="Participant"/>
+                        <label for="participant">Meeter (I am able to come to village meetings)</label><br>
 
-                        <input type="radio" id="activist" name="involvement" value="Activist"/>
+                        <input type="radio" id="activist" name="membership" value="Activist"/>
                         <label for="activist">Activist (I want to be involved in other ways)</label><br>
                     </div>
 

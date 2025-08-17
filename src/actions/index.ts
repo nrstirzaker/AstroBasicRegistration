@@ -6,11 +6,19 @@ import { createClient } from '@supabase/supabase-js'
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
 
 export const server = {
-    submit1: defineAction({
+    register: defineAction({
         accept: 'form',
         input: z.object({
-            email_address: z.string().email(),
-            privacy: z.boolean(),
+            first_name:z.string(),
+            surname:z.string(),
+            house_number_name:z.string(),
+            street:z.string(),
+            village:z.string(),
+            town:z.string(),
+            post_code:z.string(),
+            involvement:z.enum(['Follower','Participant','Activist']),
+            email_address: z.string().email().optional(),
+            privacy: z.boolean()
         }),
         handler: async (formData) => {
             console.log("inside handler")

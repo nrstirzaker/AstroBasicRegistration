@@ -5,8 +5,8 @@
       <div class="grid grid-cols-[200px_200px_200px] grid-rows-2 justify-start">
 
         <div class="col-span-1">
-          <label for="number_name">Number/Name</label>
-          <input id="number_name" type="text" v-model="number_name">
+          <label for="house_number_name">House Number/Name</label>
+          <input id="house_number_name" type="text" v-model="house_number_name">
         </div>
 
         <div class="col-span-2">
@@ -45,7 +45,7 @@ import {ref, onMounted} from 'vue'
 
 let street = ref('');
 let streetRef = ref('');
-let number_name = ref('');
+let house_number_name = ref('');
 let postcode = ref('');
 let village = ref('');
 let town = ref('Woking');
