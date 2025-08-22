@@ -6,28 +6,28 @@
 
         <div class="col-span-1">
           <label for="house_number_name">House Number/Name</label>
-          <input id="house_number_name" type="text" v-model="house_number_name">
+          <input id="house_number_name" type="text" name="house_number_name" v-model="house_number_name">
         </div>
 
         <div class="col-span-2">
           <label for="street">Street</label>
-          <input id="street" type="text" v-model="street"
+          <input id="street" type="text" name="street" v-model="street"
                  class="w-[375px]">
         </div>
 
         <div>
           <label for="village">Village</label>
-          <input id="village" type="text" v-model="village">
+          <input id="village" type="text" name="village" v-model="village">
         </div>
 
         <div>
           <label for="town">Town</label>
-          <input id="town" type="text" v-model="town" readonly>
+          <input id="town" type="text" name="town" v-model="town" readonly>
         </div>
 
         <div>
           <label for="postcode">Postcode</label>
-          <input id="postcode" type="text" v-model="postcode">
+          <input id="postcode" type="text" name="post_code" v-model="postcode">
         </div>
 
       </div>

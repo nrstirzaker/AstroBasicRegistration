@@ -2,6 +2,7 @@
 export const prerender = false
 import Layout from '../layouts/Layout.astro';
 import LookupAddress from '../components/LookupAddressComponent.vue';
+import Membership from '../components/Membership.vue';
 import {actions, isInputError} from 'astro:actions';
 
 const result = Astro.getActionResult(actions.register)
@@ -61,21 +62,7 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {}
 
                 <div>
 
-                    <div class="ml-40">
-                        <p> What level of involvement do you want?</p>
-                        <input type="radio" id="follower" name="membership" value="Follower"/>
-                        <label for="follower">Follower (I am unable to come to meetings but I want to be keep up to
-                            date)</label><br>
-
-                        <input type="radio" id="participant" name="membership" value="Participant"/>
-                        <label for="participant">Meeter (I am able to come to village meetings)</label><br>
-
-                        <input type="radio" id="activist" name="membership" value="Activist"/>
-                        <label for="activist">Activist (I want to be involved in other ways)</label><br>
-                    </div>
-
-                    <label for="ways_to_help">Ways I can help</label>
-                    <textarea id="ways_to_help" name="ways_to_help"/>
+                    <Membership client:load/>
 
                     <br>
                     <div>
