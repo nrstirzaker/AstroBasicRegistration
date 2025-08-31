@@ -1,5 +1,6 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
 
 @layer global, elements, components, utilities;
 
@@ -37,6 +38,9 @@
     }
 
     input[data-error] {
-        border: 2px solid red;
+        border-style: solid;
+        border-width: 1px;
+        border-color: red;
+        border-radius: 2px;
     }
 }

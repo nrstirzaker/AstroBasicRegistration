@@ -1,36 +1,36 @@
 <template>
 
 
+  <div class="flex gap-[5px] my-[10px]">
 
-      <div class="grid grid-cols-[200px_200px_200px] grid-rows-2 justify-start">
+    <div class="">
+      <label class="block" for="house_number_name">House Number/Name</label>
+      <input class="block inset-shadow-sm/10 bg-white" id="house_number_name" type="text" name="house_number_name" v-model="house_number_name">
+    </div>
 
-        <div class="col-span-1">
-          <label for="house_number_name">House Number/Name</label>
-          <input id="house_number_name" type="text" name="house_number_name" v-model="house_number_name">
-        </div>
+    <div class="">
+      <label class="block" for="street">Street</label>
+      <input id="street" type="text" name="street" v-model="street"
+             class="w-[375px] block inset-shadow-sm/10 bg-white" >
+    </div>
+  </div>
+  <div class="flex gap-[5px] my-[10px]">
+    <div>
+      <label class="block " for="village">Village</label>
+      <input class="block inset-shadow-sm/10 bg-white"  id="village" type="text" name="village" v-model="village">
+    </div>
 
-        <div class="col-span-2">
-          <label for="street">Street</label>
-          <input id="street" type="text" name="street" v-model="street"
-                 class="w-[375px]">
-        </div>
+    <div>
+      <label class="block" for="town">Town</label>
+      <input class="block w-[100px] inset-shadow-sm/10 bg-white" id="town" type="text" name="town" v-model="town" readonly>
+    </div>
 
-        <div>
-          <label for="village">Village</label>
-          <input id="village" type="text" name="village" v-model="village">
-        </div>
+    <div>
+      <label class="block" for="postcode">Postcode</label>
+      <input class="block inset-shadow-sm/10 bg-white" id="postcode" type="text" name="post_code" v-model="postcode">
+    </div>
 
-        <div>
-          <label for="town">Town</label>
-          <input id="town" type="text" name="town" v-model="town" readonly>
-        </div>
-
-        <div>
-          <label for="postcode">Postcode</label>
-          <input id="postcode" type="text" name="post_code" v-model="postcode">
-        </div>
-
-      </div>
+  </div>
 
 </template>
 
@@ -48,7 +48,7 @@ let streetRef = ref('');
 let house_number_name = ref('');
 let postcode = ref('');
 let village = ref('');
-let town = ref('Woking');
+let town = ref('');
 
 // function displayAddress(event : any) {
 //
