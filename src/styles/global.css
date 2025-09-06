@@ -1,6 +1,9 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "tailwindcss";
+@import "flowbite/src/themes/default.css";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
 
 @layer global, elements, components, utilities;
 
@@ -42,5 +45,9 @@
         border-width: 1px;
         border-color: red;
         border-radius: 2px;
+    }
+
+    textarea {
+        resize: none;
     }
 }

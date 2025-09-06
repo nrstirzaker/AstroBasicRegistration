@@ -22,7 +22,7 @@
     <div class="block">
       <label class="block" for="ways_to_help">Ways I can help</label>
     </div>
-    <textarea class="block inset-shadow-sm/10 bg-white" rows="4" cols="63" id="ways_to_help" :disabled="isDisabled" name="ways_to_help" :value="waysToHelpValue"/>
+    <textarea class="block inset-shadow-sm/10 bg-white" rows="4" cols="63" id="ways_to_help"  :disabled="isDisabled" name="ways_to_help" :value="waysToHelpValue"/>
   </div>
 </template>
 
