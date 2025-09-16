@@ -1,21 +1,38 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "tailwindcss";
-@import "flowbite/src/themes/default.css";
-@plugin "flowbite/plugin";
-@source "../../node_modules/flowbite";
 
 @layer global, elements, components, utilities;
 
+
+
 @layer elements {
+
     input {
+        border-color: #b4b4b4;
         border-style: solid;
         border-width: 1px;
-        border-color: #b4b4b4;
         border-radius: 2px;
-        margin-left:5px;
-
     }
+
+    input[data-error] {
+        @apply border-red-600;
+    }
+
+    .errorMsg {
+        @apply text-red-600;
+    }
+
+    input +.errorMsg {
+        visibility: hidden;
+    }
+
+
+    input[data-error] +.errorMsg {
+        visibility: visible;
+    }
+
+
     textarea {
         border-style: solid;
         border-width: 1px;
@@ -40,12 +57,7 @@
         visibility: hidden;
     }
 
-    input[data-error] {
-        border-style: solid;
-        border-width: 1px;
-        border-color: red;
-        border-radius: 2px;
-    }
+
 
     textarea {
         resize: none;

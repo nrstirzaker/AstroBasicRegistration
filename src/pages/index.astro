@@ -56,9 +56,9 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {}
                                    aria-describedby={inputErrors.first_name ? "first_name-error" : undefined}
                                    data-error={inputErrors.first_name}/>
                             {
-                                inputErrors.first_name && (
-                                            <div class="text-sm ml-1.5 text-red-500"
-                                                 id="first_name-error">{inputErrors.first_name[0]}</div>)
+
+                                            <div class="errorMsg"
+                                                 id="first_name-error">{inputErrors['first_name'] ? inputErrors['first_name'] : "First name error"}</div>
                             }
                         </div>
 
