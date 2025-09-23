@@ -57,8 +57,8 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {}
                                    data-error={inputErrors.first_name}/>
                             {
 
-                                            <div class="errorMsg"
-                                                 id="first_name-error">{inputErrors['first_name'] ? inputErrors['first_name'] : "First name error"}</div>
+                                <div class="errorMsg"
+                                     id="first_name-error">{inputErrors['first_name'] ? inputErrors['first_name'] : "First name error"}</div>
                             }
                         </div>
 
