@@ -5,7 +5,14 @@
 
     <div class="">
       <label class="block" for="house_number_name">House Number/Name</label>
-      <input class="block inset-shadow-sm/10 bg-white" id="house_number_name" type="text" name="house_number_name" v-model="house_number_name">
+      <input class="block inset-shadow-sm/10 bg-white" id="house_number_name" type="text" name="house_number_name" v-model="house_number_name"
+             :data-error=firstNameError()>
+
+
+        <div  class="errorMsg"
+           id="house_number_name-error">{{props.inputErrors['house_number_name'] ? props.inputErrors['house_number_name'][0] : "error"}}</div>
+
+
     </div>
 
     <div class="">
@@ -36,6 +43,8 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue'
+
+const props = defineProps(['inputErrors'])
 //import useScript from "./useScript";
 //const VITE_GOOGLE_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY;
 //const {PlacesClient} = require('@googlemaps/places').v1;
@@ -49,6 +58,12 @@ let house_number_name = ref('');
 let postcode = ref('');
 let village = ref('');
 let town = ref('');
+
+function firstNameError(){
+  return props.inputErrors['house_number_name'] && props.inputErrors['house_number_name'][0]
+}
+
+//let errors = ref(props.inputErrors)
 
 // function displayAddress(event : any) {
 //
@@ -77,6 +92,8 @@ let town = ref('');
 // }
 
 onMounted(async () => {
+
+  console.log(props.inputErrors['house_number_name'][0])
   //await useScript(src);
   // let options = {
   //   types: ['address'],

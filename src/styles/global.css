@@ -20,7 +20,7 @@
     }
 
     .errorMsg {
-        @apply text-red-600;
+        @apply text-sm ml-1.5 text-red-600;
     }
 
     input +.errorMsg {
