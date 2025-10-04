@@ -5,12 +5,16 @@
 
     <div class="">
       <label class="block" for="house_number_name">House Number/Name</label>
-      <input class="block inset-shadow-sm/10 bg-white" id="house_number_name" type="text" name="house_number_name" v-model="house_number_name"
-             :data-error=firstNameError()>
+      <input class="block inset-shadow-sm/10 bg-white" id="house_number_name" type="text" name="house_number_name"
+             v-model="house_number_name"
+             :data-error="inputErrors['house_number_name'] ? inputErrors['house_number_name'][0]: null"
 
+      />
 
-        <div  class="errorMsg"
-           id="house_number_name-error">{{props.inputErrors['house_number_name'] ? props.inputErrors['house_number_name'][0] : "error"}}</div>
+      <div  class="errorMsg"
+           id="house_number_name-error">
+        {{inputErrors['house_number_name'] ? inputErrors['house_number_name'][0] : '&nbsp'}}
+      </div>
 
 
     </div>
@@ -18,18 +22,19 @@
     <div class="">
       <label class="block" for="street">Street</label>
       <input id="street" type="text" name="street" v-model="street"
-             class="w-[375px] block inset-shadow-sm/10 bg-white" >
+             class="w-[375px] block inset-shadow-sm/10 bg-white">
     </div>
   </div>
   <div class="flex gap-[5px] my-[10px]">
     <div>
       <label class="block " for="village">Village</label>
-      <input class="block inset-shadow-sm/10 bg-white"  id="village" type="text" name="village" v-model="village">
+      <input class="block inset-shadow-sm/10 bg-white" id="village" type="text" name="village" v-model="village">
     </div>
 
     <div>
       <label class="block" for="town">Town</label>
-      <input class="block w-[100px] inset-shadow-sm/10 bg-white" id="town" type="text" name="town" v-model="town" readonly>
+      <input class="block w-[100px] inset-shadow-sm/10 bg-white" id="town" type="text" name="town" v-model="town"
+             readonly>
     </div>
 
     <div>
@@ -44,7 +49,7 @@
 <script setup lang="ts">
 import {ref, onMounted} from 'vue'
 
-const props = defineProps(['inputErrors'])
+const {inputErrors} = defineProps(['inputErrors'])
 //import useScript from "./useScript";
 //const VITE_GOOGLE_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY;
 //const {PlacesClient} = require('@googlemaps/places').v1;
@@ -59,11 +64,8 @@ let postcode = ref('');
 let village = ref('');
 let town = ref('');
 
-function firstNameError(){
-  return props.inputErrors['house_number_name'] && props.inputErrors['house_number_name'][0]
-}
 
-//let errors = ref(props.inputErrors)
+//console.log(inputErrors['house_number_name'][0]);
 
 // function displayAddress(event : any) {
 //
@@ -93,7 +95,6 @@ function firstNameError(){
 
 onMounted(async () => {
 
-  console.log(props.inputErrors['house_number_name'][0])
   //await useScript(src);
   // let options = {
   //   types: ['address'],

@@ -10,9 +10,9 @@ export const server = {
         accept: 'form',
         input: z.object({
             title: z.string(),
-            first_name:z.string({message: 'Required'}),
+            first_name:z.string({message: 'First name is required'}),
             surname:z.string(),
-            house_number_name:z.string({message: 'Required'}),
+            house_number_name:z.string({message: 'House number is required'}),
             street:z.string(),
             village:z.string(),
             town:z.string(),
