@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/node": "^9.4.2",
-    "@astrojs/vue": "^5.1.0",
+    "@astrojs/node": "^9.4.4",
+    "@astrojs/vue": "^5.1.1",
     "@googlemaps/places": "^2.1.0",
     "@supabase/supabase-js": "^2.55.0",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.13.2",
+    "astro": "^5.14.1",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2",
     "vue": "^3.5.18"

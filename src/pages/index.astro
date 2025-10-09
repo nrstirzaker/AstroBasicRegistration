@@ -30,12 +30,18 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {}
                     <div class="flex my-[10px] gap-2 justify-between items-center ">
                         <div class="">
                             <label class="block" for="email_address">Email Address</label>
-                            <input type="text" id="email_address" name="email_address" class="block w-[200px] inset-shadow-sm/10 bg-white"/>
+                            <input type="email" id="email_address" name="email_address" class="block w-[200px] inset-shadow-sm/10 bg-white"
+                            aria-describedby={inputErrors.email_address ? "email_address-error" : undefined}
+                            data-error={inputErrors.email_address}/>
+                            {
 
+                                <div class="errorMsg"
+                                     id="email_address-error">{inputErrors['email_address'] ? inputErrors['email_address'] : "Email Address error"}</div>
+                            }
                         </div>
 
                         <div class="flex-row justify-center items-center h-full w-full">
-                            <label class="flex justify-center " for="no_email_address">I don't have an email address</label>
+                            <label class="flex justify-center" for="no_email_address">I don't have an email address</label>
                             <input class="block h-full w-full inset-shadow-sm/10 bg-white m-2" type="checkbox" id="no_email_address" name="no_email_address" />
                         </div>
                     </div>

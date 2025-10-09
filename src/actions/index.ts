@@ -9,19 +9,34 @@ export const server = {
     register: defineAction({
         accept: 'form',
         input: z.object({
-            title: z.string(),
-            first_name:z.string({message: 'First name is required'}),
-            surname:z.string(),
-            house_number_name:z.string({message: 'House number is required'}),
-            street:z.string(),
-            village:z.string(),
-            town:z.string(),
-            post_code:z.string(),
-            membership:z.enum(['Follower','Participant','Activist']),
-            email_address: z.string().email().optional(),
-            ways_to_help:z.string(),
-            privacy_statement: z.boolean()
-        }),
+            //title: z.string(),
+            //first_name:z.string({message: 'First name is required'}).optional(),
+            //surname:z.string(),
+            //house_number_name:z.string({message: 'House number is required'}),
+            //street:z.string(),
+            //village:z.string(),
+            //town:z.string(),
+            //post_code:z.string(),
+            //membership:z.enum(['Follower','Participant','Activist']),
+            no_email_address: z.boolean().optional(),
+            //ways_to_help:z.string(),
+            //privacy_statement: z.boolean(),
+            email_address: z.string().optional()
+        }).refine(    data => {
+            //throw new Error("got ere");
+                console.log('no_email_address', data.no_email_address);
+                console.log('email_address', data.email_address);
+                if (data.no_email_address) {
+                    return data.email_address === undefined;
+                }
+
+                return data.email_address !== undefined;
+            },
+            () => ({
+                path: ['email_address'],
+                message: '`email_address` field is required for the `web-dev` category',
+            })),
+
         handler: async (formData) => {
             console.log("inside handler")
             console.log("formData:" + formData)
